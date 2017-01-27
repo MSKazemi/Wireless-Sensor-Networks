@@ -1,6 +1,6 @@
 function Ps_L=Ps_L(level,levelChar,probInLeveliConToRouterj)
 % Ps_L menase success probability of packet transmission from level l to
-% level l-1
+% level l-1.
 Pcon=levelChar(level,8);
 probPortionSD=levelChar(level,5);
 if(level-1==0)

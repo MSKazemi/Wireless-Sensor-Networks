@@ -12,5 +12,6 @@ treeWSNsolver(model)
 		1-treeNetplot(NodesParents)
 	Output:
 		1-treeWSNsol.HTP
-		2-treeWSNsol.Con
-  
+		2-treeWSNsl.Con
+
+Mohsen.SeyedKazemi@gmail.com
