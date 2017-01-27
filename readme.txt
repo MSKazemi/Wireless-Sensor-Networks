@@ -13,4 +13,4 @@ treeWSNsolver(model)
 	Output:
 		1-treeWSNsol.HTP
 		2-treeWSNsol.Con
-The bus station can connect to this network and collect the data and information of request of people that asked for driving and send that data to data center, the data center with respect to the city traffic and request can generate the dynamic optimal route for buses between different points. so some of the unrequested bus station and some of the extraneous or auxiliary roads or by streets would be out of the services.    
+  
