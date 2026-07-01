@@ -1,0 +1,54 @@
+# Wireless-Sensor-Networks
+
+> MATLAB simulator for wireless sensor networks (WSN). It models tree and star
+> topologies, checks node-to-parent connectivity, detects the hidden terminal
+> problem between sibling nodes, and estimates per-level and end-to-end packet
+> delivery success probability from a radio link-budget / path-loss model.
+
+Author: Mohsen Seyedkazemi Ardebili (mohsen.seyedkazemi@gmail.com)
+Language: MATLAB
+License: Apache-2.0
+Repository: https://github.com/MSKazemi/Wireless-Sensor-Networks
+
+## What it does
+
+- Builds and plots a WSN topology from a parent vector (coordinator + nodes).
+- Checks connectivity: a child connects to its parent when its maximum radio
+  transmission distance (from the link budget) is at least the Euclidean distance.
+- Detects the hidden terminal problem (HTP) between nodes that share a parent.
+- Estimates packet delivery success probability per tree level and end-to-end.
+- Uses a link-budget / path-loss radio model driven by transmit power, receiver
+  sensitivity, antenna gains, path-loss exponent, and operating frequency (e.g. 2.4 GHz).
+
+## Network model (treeNetModel)
+
+- NodesParents: parent of each node (0 = coordinator/root)
+- NodeLoc: node coordinates (2D or 3D)
+- SensRange: sensing coverage range per node
+- NodeP: per-node transmit power range (dBm) and receiver sensitivity (dBm)
+- NodeBatt: battery energy per node (inf for the coordinator)
+- Ch: radio channel; Gt/Gr: antenna gains (dB); Beta: path-loss exponent; f: frequency (Hz)
+
+## Key files
+
+- treeWSNsolverRun_V2.m: example run script (defines a sample tree and runs the solver)
+- WSNsolver.m: dispatches to the star/tree/mesh solver by topology
+- treeWSNsolver.m: tree solver (connectivity + hidden terminal analysis)
+- pSuccessTree.m / Ps_L.m: packet delivery success probability (end-to-end / per-level)
+- vectorToNodeParentLevelChilderen.m: derives node level and child counts
+- treeNetplot.m: plots the network tree (adapted from MATLAB treeplot)
+- conCheck.m / HTPCheck.m: connectivity and hidden-terminal link checks
+- euclideanDis.m: 2D/3D Euclidean distance
+
+## How to run
+
+1. Add the repository folder to the MATLAB path.
+2. Run `treeWSNsolverRun_V2` to simulate the sample tree network.
+3. To analyse a custom network, edit the treeNetModel fields and call
+   `WSNsolver(treeNetModel, 'tree')`.
+
+## Notes
+
+- The tree topology path is the most complete; star and mesh branches are stubs.
+- Some referenced helpers (maxTxDis, starWSNsolver, meshWSNsolver) are not included.
+- Pmac.m and probPortionSD.m return placeholder constants.
